@@ -1,0 +1,44 @@
+<div class="wrapper-page">
+    <h2 class="title">Creemos tu
+        <br>
+        nuevo usuario
+    </h2>
+    <form [formGroup]="formRegister">
+        <div class="form-group">
+            <input type="number" class="form-control" placeholder="No. Cédula" formControlName="identificacion"
+                name="identificacion" />
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre" name="nombre" />
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Apellidos" formControlName="apellidos"
+                name="apellidos" />
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="Email" formControlName="email" name="email" />
+        </div>
+
+        <div class="form-group">
+            <input type="number" class="form-control" placeholder="Celular" formControlName="celular" name="celular" />
+        </div>
+    </form>
+
+    <!-- <p *ngIf="error" style="color: red; padding-left: 10px;">
+        {{error}}
+    </p> -->
+    <div class="buttons-login">
+        <button class="finexus-btn btn-simulate-credit principal-buttons" href="/simulador"
+            (click)="openAdoValidation()" [disabled]="!formRegister.valid" style="margin-left:auto; margin-right:auto">
+            Crear nuevo usuario
+        </button>
+    </div>
+</div>
+
+<img src="/assets/images/shapes/pink_1.png" alt="finexus" class="right-image">
+<img src="/assets/images/shapes/green_1.png" alt="finexus" class="left-image">
+<app-ado (onState)="onAdoState($event)"></app-ado>
+<ngx-loading *ngIf="loading" [show]="loading" [config]="{ backdropBorderRadius: '3px' }"
+    [config]="{fullScreenBackdrop: true}"></ngx-loading>
+<!-- <button (click)="openAdoValidation()">Open</button> -->

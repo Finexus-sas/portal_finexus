@@ -1,0 +1,17 @@
+<div class="header-stepper" *ngIf="showHeader">
+    <div class="title-container">
+        <h3 class="title-step">Estado actual</h3>
+        <h3 class="title-step">{{steps[active - 1]}}</h3>
+    </div>
+</div>
+<div class="steps">
+    <div class="line-step">
+        <div class="progress" [style.width]="percentage + '%'"></div>
+    </div>
+    <div class="step" *ngFor="let item of steps; let i = index">
+        <div class="circle-step" [ngClass]="{'active': ( i  + 1) <= active}"></div>
+        <p class="name-step" *ngIf="showName">
+            {{steps[i]}}
+        </p>
+    </div>
+</div>

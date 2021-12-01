@@ -1,0 +1,56 @@
+<div class="wrapper-page-left">
+
+    <h2 class="title">
+        Solicitud de <br>
+        Devolución de Saldo a favor
+    </h2>
+
+    <p>
+        Para tramitar tu solicitud necesitamos que adjuntes unos documentos obligatorios en formato .JPG (imagen) o
+        .PDF, después que hayas enviado estos documentos recibirás una notificación.
+    </p>
+
+
+    <h2 class="title" style="font-size: 18px;">
+        Carta de solicitud de <br>
+        devolución de saldo a favor
+    </h2>
+
+    <div class="form-group">
+        <button class="btn btn-file" (click)="openFile('file1', 0)" [ngClass]="{'fill': files[0].fileExt !=''}">Adjuntar Carta de Solicitud</button>
+        <input type="file" id="file1" style="display: none;" (change)="handleFileSelect($event)" accept="image/png, image/gif, image/jpeg, application/pdf">
+    </div>
+
+    <h2 class="title" style="font-size: 18px;">
+        Certificado de <br>
+        Cuenta bancaria
+    </h2>
+
+
+    <div class="form-group">
+        <button class="btn btn-file" (click)="openFile('file2', 1)"  [ngClass]="{'fill': files[1].fileExt}">Adjuntar Certificado</button>
+        <input type="file" id="file2" style="display: none;" (change)="handleFileSelect($event)" accept="image/png, image/gif, image/jpeg, application/pdf">
+    </div>
+
+
+    <h2 class="title" style="font-size: 18px;">
+        Fotocopia de cédula al 150% <br>
+        Con Firma y Huella
+    </h2>
+
+    <div class="form-group">
+        <button class="btn btn-file" (click)="openFile('file3', 2)" [ngClass]="{'fill': files[2].fileExt}">Adjuntar Fotocopia de cédula</button>
+        <input type="file" id="file3" style="display: none;" (change)="handleFileSelect($event)"
+        accept="image/png, image/gif, image/jpeg, application/pdf" >
+    </div>
+
+
+    <div class="form-group">
+        <button class="finexus-btn btn-simulate-credit principal-buttons" (click)="save()" [disabled]="isValidForm">
+            Solicitar Devolución de Saldo
+        </button>
+    </div>
+
+</div>
+<img src="/assets/images/shapes/pink_4.png" class="peca-rosa">
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>

@@ -1,0 +1,42 @@
+<div class="wrapper-page-left">
+    <h2 class="title">
+        Solicitud de <br>
+        Certificado Paz y Salvo
+    </h2>
+
+    <p style="margin-top: 20px;">
+        Selecciona de la siguiente lista, el crédito del cual quieres <br>obtener de tu certificado de Paz y Salvo.
+    </p>
+
+
+    <ul>
+        <li *ngFor="let item of listPeaceAndSafe">
+            <input type="radio" style="cursor: pointer;" [value]="item.numero_obligacion" [(ngModel)]="numeroObligacion" name="numero_obligacion"/>
+            <div class="number-credit">
+                <p class="title-option" style="margin-bottom: 0;">Crédito no.</p>
+                <p class="state default">{{item.numero_obligacion}}</p>
+            </div>
+
+            <div class="name-pagaduria" >
+                <p class="title-option"  style="margin-bottom: 8px;">Pagaduría</p>
+                <h2>
+                    {{item.pagaduria}}
+                </h2>
+            </div>
+
+            <div class="state-paagduria">
+                <p class="title-option" style="margin-bottom: 0;">Estado</p>
+                <div class="state">
+                    {{item.estado}}
+                </div>
+            </div>
+        </li>
+    </ul>
+    <p *ngIf="error" style="color: red;">
+        {{error}}
+    </p>
+    <button class="finexus-btn btn-simulate-credit principal-buttons" [disabled]="!numeroObligacion" (click)="generate()">
+        Solicitar certificado Paz y Salvo
+    </button>
+</div>
+<img src="/assets/images/shapes/pink_4.png" class="peca-rosa">

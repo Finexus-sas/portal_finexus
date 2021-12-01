@@ -1,0 +1,29 @@
+// .wrapper-page-left{
+//     padding-top: 115px;
+//     max-width: 452px;
+//     .title{
+//         margin-bottom: 10px;
+//     }
+// }
+
+
+ul{
+    list-style: none;
+    padding-left: 0;
+    margin-top: 50px;
+
+    li{
+        position: relative;
+        margin-bottom: 80px;
+        h3{
+            font-size: 18px;
+            font-weight: bold;
+            color: #1C3F89;
+        }
+        img{
+            position: absolute;
+            z-index: -1;
+            transform: translate(-40%, -35%);
+        }
+    }
+}

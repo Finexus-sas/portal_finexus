@@ -1,0 +1,108 @@
+<div class="wrapper-page-left">
+    
+    <app-stepper [steps]="steps" [active]="active"></app-stepper>
+    <h2 class="title">
+        Solicitud de <br>
+        Certificado de Deuda
+    </h2>
+
+    <p>
+        Rellena los siguientes campos para
+        realizar la solicitud de tu certificado.
+    </p>
+
+    <form [formGroup]="form">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="No. Cédula" name="identificacion"
+                formControlName="identificacion" />
+        </div>
+
+        <div class="form-group">
+            <input type="text" 
+                class="form-control" 
+                placeholder="Fecha de expedición CC" 
+                name="fecha_expedicion"
+                formControlName="fecha_expedicion" 
+                readonly
+                ngbDatepicker
+                [minDate]="{year: 1960, month: 1, day: 1}"
+                #d3="ngbDatepicker"
+                (click)="d3.toggle()"
+            />
+        </div>
+
+        <div class="form-group">
+            <select type="text" class="form-control" aria-describedby="emailHelp"
+                placeholder="Departamento de expedición" name="departamento_exp_cc"
+                formControlName="departamento_exp_cc" 
+                (change)="getCitys()">
+                <option value="">Departamento de expedición</option>
+                <option [value]="item.cod_departamento" *ngFor="let item of dptos">{{item.departamento}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <select type="text" class="form-control" aria-describedby="emailHelp" placeholder="Ciudad de expedición"
+                name="ciudad_exp_cc" formControlName="ciudad_exp_cc">
+                <option value="">Ciudad de expedición</option>
+                <option [value]="item.cod_municipio" *ngFor="let item of citys">{{item.municipio}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Nombre" name="nombres" formControlName="nombres" />
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Apellidos" name="nombres"
+                formControlName="apellidos" />
+        </div>
+
+        <div class="form-group">
+            <select type="text" class="form-control" name="id_pagaduria" formControlName="id_pagaduria">
+                <option value="">Pagaduría</option>
+                <option [value]="item.id" *ngFor="let item of pagaduries">{{
+                    item.descripcion
+                    }}</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+
+            <div class="content-input" style="display: flex; justify-content: space-between;">
+                <input type="email" placeholder="Ingrese email" formControlName="email" style="width: 50%;">
+                <select name="domain" class="emails" formControlName="domain" style="background: #dadada;
+              margin-left: -20px;
+              border-radius: 0 30px 30px 0;
+              padding-left: 10px; width: calc(50% - 20px)">
+                    <option value="">Tipo de correo</option>
+                    <option [value]="item" *ngFor="let item of emails">{{item}}</option>
+                </select>
+            </div>
+            <div class="content-labels" style="padding-left: 20px;">
+                <label style="color: red;"
+                    *ngIf="((form.controls.email.dirty || form.controls.email.touched) && form.controls.email.invalid)">
+                    Email invalido, no digitar el @ o caracteres especiales
+                </label>
+
+                <label style="color: red;"
+                    *ngIf="((form.controls.domain.dirty || form.controls.domain.touched || form.controls.email.dirty || form.controls.email.touched) && form.controls.domain.invalid)">
+                    Tipo de correo no seleccionado
+                </label>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Celular" name="celular"  formControlName="celular"/>
+        </div>
+        <p *ngIf="error"  style="color: red;">
+            {{error}}
+        </p>
+        <button class="finexus-btn btn-simulate-credit principal-buttons" (click)="save()">
+            Solicitar desprendible de pago
+        </button>
+    </form>
+</div>
+<img src="/assets/images/shapes/pink_4.png" class="peca-rosa">

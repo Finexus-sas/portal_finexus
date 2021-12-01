@@ -1,0 +1,120 @@
+.header-main {
+  background: rgba(238, 238, 231, 0.96);
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo-finexus-portal {
+  height: 32px;
+}
+
+p {
+  margin-bottom: 0;
+  padding-left: 12px;
+  color: #1c3f89;
+
+  &:last-child {
+    font-weight: 600;
+  }
+}
+
+
+.showMenu {
+  transform: translateX(-280px);
+}
+
+aside {
+  background: #eeeee7;
+  width: 280px;
+  height: 100vh;
+  position: fixed;
+  right: -280px;
+  top: 0;
+  z-index: 100;
+  padding: 15px;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &.show {
+    right: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    li {
+      margin-bottom: 20px;
+      &:first-child {
+        margin-top: 20px;
+      }
+    }
+    a {
+      color: #4d4d4d;
+      font-size: 18px;
+      font-weight: 600;
+      display: block;
+    }
+  }
+}
+
+.circle-user {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid #999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1c3f89;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.content-button-menu {
+  position: absolute;
+  right: 45px;
+  top: 50%;
+  transform: translateY(-50%);
+  button {
+    color: #1c3f89;
+    font-weight: 600;
+  }
+}
+
+.closeSession{
+  position: absolute;
+  bottom: 20px;
+  max-width: 100% !important;
+  width: 90%;
+}
+
+
+.main-section.container-fluid{
+  padding-left: 12em;
+  padding-right: 12em;
+}
+
+
+@media (max-width: 768px) {
+  .main-section.container-fluid{
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+ 
+}
+
+
+
+
+

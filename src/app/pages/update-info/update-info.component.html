@@ -1,0 +1,33 @@
+<div class="wrapper-page-left">
+    <h2 class="title">
+        Actualización de <br>
+        Datos personales
+    </h2>
+
+    <p>
+        Rellena los siguientes campos para
+        actualizar tus datos personales.
+    </p>
+
+    <form [formGroup]="form" style="margin-top: 40px;">
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="Correo electrónico" name="email"
+                formControlName="email" />
+        </div>
+
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="Celular" name="celular" formControlName="celular" />
+        </div>
+
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="Dirección de residencia" name="direccion"
+                formControlName="direccion" />
+        </div>
+
+        <button class="finexus-btn btn-simulate-credit principal-buttons" (click)="saveData()" [disabled]="!form.valid">
+            Actualizar tus datos personales
+        </button>
+    </form>
+</div>
+
+<app-ado (onState)="onAdoState($event)"></app-ado>

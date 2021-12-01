@@ -1,0 +1,40 @@
+<div class="wrapper-page">
+    <form [formGroup]="formLogin">
+
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Usuario" formControlName="username" name="username" />
+        </div>
+
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Contraseña" formControlName="password"
+                name="password" />
+        </div>
+
+        <p class="error" *ngIf="showError">
+            Usuario o contraseña incorrecto
+        </p>
+    </form>
+    <div class="recapcha">
+        <re-captcha (resolved)="resolvedCapcha($event)" [siteKey]="'6LeWhkkcAAAAAMZgcK5C5tyh_-MMCCK5q3_AXuTn'">
+        </re-captcha>
+    </div>
+    <a routerLink="/auth/recovery">
+        ¿Olvidaste tu contraseña? <br>
+        <b>Recupérala aquí</b>
+    </a>
+
+    <div class="buttons-login">
+        <button class="finexus-btn btn-simulate-credit principal-buttons" href="/simulador"
+            [disabled]="!formLogin.valid || !resolve" (click)="login()" style="margin-left: auto; margin-right: auto;">
+            Ingresar al Portal Cliente
+        </button>
+
+        <button class="finexus-btn" routerLink="/auth/register" style="margin: auto;">
+            Crear nuevo usuario
+        </button>
+    </div>
+</div>
+
+
+<img src="/assets/images/shapes/pink_1.png" alt="finexus" class="right-image">
+<img src="/assets/images/shapes/green_1.png" alt="finexus" class="left-image">

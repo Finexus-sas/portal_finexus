@@ -1,0 +1,52 @@
+// .wrapper-page-left {
+//     padding-top: 54px;
+//     max-width: 500px;
+//     .title {
+//         margin-bottom: 10px;
+//     }
+// }
+
+.options-buy-walltet {
+    display: flex;
+    margin-top: 20px;
+    .option-buy-walltet {
+        width: 155px;
+        height: 60px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+        background-color: #ffffff;
+        cursor: pointer;
+        &:first-child {
+            margin-right: 10px;
+        }
+
+        &.selected {
+            background-color: #6cddba;
+            color: #1c3f89;
+        }
+    }
+}
+
+.form-group{
+    margin-bottom:40px;
+
+    &:first-child{
+        margin-top: 20px;
+    }
+    label{
+        color: #4D4D4D;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    span{
+        color: #4D4D4D;
+        font-size: 12px;
+        font-weight: 500;
+    }
+}

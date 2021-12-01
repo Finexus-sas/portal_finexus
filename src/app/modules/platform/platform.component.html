@@ -1,0 +1,53 @@
+<header class="header-main" [ngClass]="{'showMenu': menuOpen}">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-md-12  col-md-12 content-menu">
+                <a href="/">
+                    <img class="logo-finexus-portal"
+                        src="https://www.finexus.com.co/wp-content/uploads/2020/06/Logo%20Finexus%20Header.svg"
+                        alt="logo finexus"></a>
+                <p>Bienvenido al Portal Cliente</p>
+                <p>{{auth.name}}</p>
+            </div>
+            <div class="content-button-menu">
+                <button (click)="toggleMenu()" class="btn btn-default btn-flat" *ngIf="!menuOpen">Menu</button>
+                <button (click)="toggleMenu()" class="btn btn-default btn-flat" *ngIf="menuOpen"><img
+                        src="/assets/images/shapes/menu.png" alt=""></button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<aside [ngClass]="{'show': menuOpen}">
+    <div class="circle-user">{{auth.initals}}</div>
+    <p style="padding-left: 0; font-weight: 600;">{{auth.name}}</p>
+
+    <p style="padding-left: 0; font-weight: 600;">CC {{auth.identification}}</p>
+
+    <ul>
+        <li>
+            <a routerLink="/portal/certificado-de-deuda">Solicitar un
+                Certificado de Deuda</a>
+        </li>
+        <li>
+            <a routerLink="/portal/lista-creditos-para-paz-y-salvo">Solicitar un
+                Certificado de Paz y Salvo</a>
+        </li>
+        <li>
+            <a routerLink="/portal/solcitud-saldo-a-favor">Solicitar Devolución
+                de Saldo a Favor</a>
+        </li>
+
+        <li>
+            <a routerLink="/portal/actualizacion-de-datos">Actualiza tus datos</a>
+        </li>
+    </ul>
+
+    <button class="btn btn-file closeSession" (click)="closeSession()">Cerrar sesión</button>
+</aside>
+<main class="main-container" [ngClass]="{'showMenu': menuOpen}">
+    <div class="main-section "
+        [ngClass]="{'container-fluid': currentUrl =='/portal/home', 'container': currentUrl !='/portal/home'}">
+        <router-outlet></router-outlet>
+    </div>
+</main>

@@ -1,0 +1,144 @@
+<div class="row container-dashboard justify-content-between">
+    <div class="col-md-12 col-lg-5 col-lg-5">
+        <div class="dashboard-options-container">
+            <img src="/assets/images/shapes/document.png" style="margin-bottom: 30px;">
+            <h2 style="margin-bottom: 30px;">Solicita tus documentos</h2>
+
+            <ul>
+                <li>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="/assets/images/shapes/deuda.png" alt="">
+                            <h3>Certificado de Deuda</h3>
+                        </div>
+                        <div class="col-md-6 container-button">
+                            <button class="white" routerLink="/portal/certificado-de-deuda">Solicita aquí</button>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="/assets/images/shapes/paz.png" alt="">
+                            <h3>Certificado de Paz y Salvo</h3>
+                        </div>
+                        <div class="col-md-6 container-button">
+                            <button class="white" routerLink="/portal/lista-creditos-para-paz-y-salvo">Solicita
+                                aquí</button>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="/assets/images/shapes/devolucion.png" alt="">
+                            <h3>Devolución de Saldo a Favor</h3>
+                        </div>
+                        <div class="col-md-6 container-button">
+                            <button class="white" routerLink="/portal/solcitud-saldo-a-favor">Solicita aquí</button>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-12 col-lg-6 ">
+        <h2 style="margin-bottom: 30px; padding-left: 20px;">Gestiona tus solicitudes</h2>
+
+        <ul class="list-requests">
+            <li *ngFor="let item of requests">
+                <div class="title-section">
+                    <h2>Estado solicitudes en trámite</h2>
+                </div>
+                <div class="content-section">
+                    <p class="subtitle-section">Certificado de Deuda<br>
+                        {{item.fechaDecode}}</p>
+
+                    <app-stepper [steps]="steps" [active]="getState(item.codigoEstado)" [showHeader]="false"
+                        [showName]="true"></app-stepper>
+
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="steps-vertical">
+                                <ul class="steps-vertical-list">
+                                    <li>
+                                        <div>
+                                            <img src="/assets/images/shapes/check_green.png"
+                                                *ngIf="getState(item.codigoEstado) >= 1" />
+                                            <img src="/assets/images/shapes/no_check.png"
+                                                *ngIf="getState(item.codigoEstado) < 1">
+                                        </div>
+                                        <div>
+                                            <p>Formulario de Solicitud</p>
+
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div>
+                                            <img src="/assets/images/shapes/check_green.png"
+                                                *ngIf="getState(item.codigoEstado) >= 2" />
+                                            <img src="/assets/images/shapes/no_check.png"
+                                                *ngIf="getState(item.codigoEstado) < 2">
+                                        </div>
+                                        <div>
+                                            <p>Pago del desprendible en Banco</p>
+
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div>
+                                            <img src="/assets/images/shapes/check_green.png"
+                                                *ngIf="getState(item.codigoEstado) >= 3">
+                                            <img src="/assets/images/shapes/no_check.png"
+                                                *ngIf="getState(item.codigoEstado) < 3">
+                                        </div>
+                                        <div>
+                                            <p>Validación de identidad</p>
+
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div>
+                                            <img src="/assets/images/shapes/check_green.png"
+                                                *ngIf="getState(item.codigoEstado) >= 4">
+                                            <img src="/assets/images/shapes/no_check.png"
+                                                *ngIf="getState(item.codigoEstado) < 4">
+                                        </div>
+                                        <div>
+                                            <p>Certificado validado</p>
+
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div>
+                                            <img src="/assets/images/shapes/check_green.png"
+                                                *ngIf="getState(item.codigoEstado) >= 5">
+                                            <img src="/assets/images/shapes/no_check.png"
+                                                *ngIf="getState(item.codigoEstado) < 5">
+                                        </div>
+                                        <div>
+                                            <p>Recibo del Certificado por correo</p>
+
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-5 container-button">
+                            <button class="finexus-btn btn-simulate-credit principal-buttons"
+                                [routerLink]="'/portal/documentos-pendientes/'+item.idSolicitud+'/'+item.idCertificado+'/'+getState(item.codigoEstado)">Adjuntar
+                                desprendible</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

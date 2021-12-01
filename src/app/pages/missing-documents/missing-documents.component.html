@@ -1,0 +1,75 @@
+<div class="wrapper-page-left">
+
+    <app-stepper [steps]="steps" [active]="active"></app-stepper>
+    <h2 class="title">
+        ¡Hola {{authService.firstName}}! <br>
+        Rellena estos campos para <br>continuar tu solicitud.
+    </h2>
+
+
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label for="">Digita el valor total del desprendible pagado en el banco.</label>
+            <input type="text" class="form-control" name="valorPagado" formControlName="valorPagado"
+                (keyup)="currency('valorPagado')" />
+        </div>
+
+        <div class="form-group">
+            <label for="">Selecciona la fecha del día cuando hiciste el pago en el banco.</label>
+            <input type="text" class="form-control" readonly name="fechaPago" formControlName="fechaPago" ngbDatepicker
+            [minDate]="{year: 1960, month: 1, day: 1}" #d3="ngbDatepicker" (click)="d3.toggle()" />
+        </div>
+
+        <div class="form-group">
+            <label for="">¿Cuál es el motivo de la solicitud que estás gestionando?</label>
+            <span>Selecciona una de las siguientes opciones.</span>
+            <div class="options-buy-walltet">
+                <div class="option-buy-walltet " [ngClass]="{'selected': motivo == 'COMPRA CARTERA'}"
+                    (click)="motivo = 'COMPRA CARTERA'">Compra de
+                    <br> cartera
+                </div>
+                <div class="option-buy-walltet" [ngClass]="{'selected': motivo == 'OTRA'}" (click)="motivo = 'OTRA'">
+                    Otra</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="">Selecciona la entidad que hará la compra de cartera.</label>
+            <select type="text" class="form-control" name="entidad" formControlName="entidad">
+                <option value="">Selecciona la entidad</option>
+                <option [value]="item.id" *ngFor="let item of entitys">{{item.descripcion}}</option>
+            </select>
+        </div>
+        <h2 class="title" style="font-size: 18px;">
+            Adjunta los <br>
+            documentos faltantes
+        </h2>
+
+        <div class="form-group">
+            <button class="btn btn-file" (click)="openFile()">Adjuntar Soporte de pago</button>
+            <span style="margin-top: 40px; display: block;">
+                *Solo se admite adjuntar soporte de pago en formato .JPG o .PDF con un peso máximo de 4MB.
+            </span>
+
+            <input type="file" id="file" style="display: none;" (change)="handleFileSelect($event)" accept="image/png, image/gif, image/jpeg, application/pdf">
+        </div>
+
+        <p *ngIf="error" style="color: red;">
+            {{error}}
+        </p>
+
+        <div class="form-group">
+            <button class="finexus-btn btn-simulate-credit principal-buttons" (click)="validateAdo()"
+                [disabled]="!form.valid || !this.file">
+                Siguiente paso
+            </button>
+        </div>
+
+
+    </form>
+</div>
+
+<app-ado (onState)="onAdoState($event)"></app-ado>
+<img src="/assets/images/shapes/pink_4.png" class="peca-rosa">
+<ngx-loading *ngIf="loading" [show]="loading" [config]="{ backdropBorderRadius: '3px' }"
+    [config]="{fullScreenBackdrop: true}"></ngx-loading>

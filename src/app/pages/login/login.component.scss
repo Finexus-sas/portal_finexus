@@ -1,0 +1,56 @@
+.wrapper-page{
+    margin-top: 200px;
+}
+
+a{
+    display: block;
+    text-align: center;
+    color: #1C3F89;
+    font-weight: 500;
+    b{
+        font-weight: bold;
+    }
+}
+
+
+.recapcha{
+    width:280px;
+    height:75px;
+    // outline:1px solid red;
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.buttons-login{
+    margin-top: 60px;
+    width:100%;
+    
+     button{
+         max-width: 300px;
+         display: block;
+         margin-bottom: 20px;
+     }
+}
+
+
+@media (max-width: 768px) {
+    .right-image{
+        display: none;
+    }
+
+    .left-image{
+        display: none;
+    }
+
+
+    .wrapper-page{
+        margin-top: 100px;
+    }
+}
+
+
+
