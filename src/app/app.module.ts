@@ -27,6 +27,7 @@ import { PositiveBalanceSuccessComponent } from './pages/positive-balance-succes
 import { UpdateInfoSuccessComponent } from './pages/update-info-success/update-info-success.component';
 import { AdoDebtSuccessComponent } from './pages/ado-debt-success/ado-debt-success.component';
 import { NgxLoadingModule } from 'ngx-loading';
+import { CapitalPaymentComponent } from './pages/capital-payment/capital-payment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { NgxLoadingModule } from 'ngx-loading';
     UpdateInfoComponent,
     PositiveBalanceSuccessComponent,
     UpdateInfoSuccessComponent,
-    AdoDebtSuccessComponent
+    AdoDebtSuccessComponent,
+    CapitalPaymentComponent
   ],
   imports: [
     HttpClientModule,

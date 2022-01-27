@@ -15,6 +15,7 @@ import { UpdateInfoSuccessComponent } from 'src/app/pages/update-info-success/up
 import { UpdateInfoComponent } from 'src/app/pages/update-info/update-info.component';
 import { HomeComponent } from '../../pages/home/home.component';
 import { PlatformComponent } from './platform.component';
+import {CapitalPaymentComponent} from "../../pages/capital-payment/capital-payment.component";
 
 const routes: Routes = [
     {
@@ -61,7 +62,7 @@ const routes: Routes = [
             {
                 path: "actualizacion-de-datos",
                 component: UpdateInfoComponent,
-            }, 
+            },
             {
                 path: "actualizacion-correcta",
                 component: UpdateInfoSuccessComponent,
@@ -74,6 +75,10 @@ const routes: Routes = [
                 path: "success-validacion/:date",
                 component: AdoDebtSuccessComponent,
             },
+            {
+              path: 'abono-capital',
+              component: CapitalPaymentComponent
+            }
         ]
     }
 ];

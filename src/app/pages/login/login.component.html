@@ -14,10 +14,10 @@
             Usuario o contraseña incorrecto
         </p>
     </form>
-    <div class="recapcha">
+    <!--<div class="recapcha">
         <re-captcha (resolved)="resolvedCapcha($event)" [siteKey]="'6LeWhkkcAAAAAMZgcK5C5tyh_-MMCCK5q3_AXuTn'">
         </re-captcha>
-    </div>
+    </div>-->
     <a routerLink="/auth/recovery">
         ¿Olvidaste tu contraseña? <br>
         <b>Recupérala aquí</b>
@@ -25,9 +25,13 @@
 
     <div class="buttons-login">
         <button class="finexus-btn btn-simulate-credit principal-buttons" href="/simulador"
-            [disabled]="!formLogin.valid || !resolve" (click)="login()" style="margin-left: auto; margin-right: auto;">
+            [disabled]="!formLogin.valid" (click)="login()" style="margin-left: auto; margin-right: auto;">
             Ingresar al Portal Cliente
         </button>
+        <!--<button class="finexus-btn btn-simulate-credit principal-buttons" href="/simulador"
+            [disabled]="!formLogin.valid || !resolve" (click)="login()" style="margin-left: auto; margin-right: auto;">
+            Ingresar al Portal Cliente
+        </button>-->
 
         <button class="finexus-btn" routerLink="/auth/register" style="margin: auto;">
             Crear nuevo usuario

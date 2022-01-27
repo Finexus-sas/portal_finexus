@@ -46,6 +46,14 @@ export class PortalService {
     });
   }
 
+  getGeneratePayment(params: any) {
+    return this.http.get(`/portal/download/${params.type}/${params.idPayment}`);
+  }
+
+  postCertificate(data: any) {
+    return this.http.post('/portal/certificado/abono-capital', data);
+  }
+
 
   getListPeaceAndSafe() {
     return this.http.get("/portal/seas/pazysalvo");
@@ -96,6 +104,20 @@ export class PortalService {
 
     console.log(object.year + "-" + month + "-" + day)
     return object.year + "-" + month + "-" + day
+  }
+
+  formatearNumero(value: any){
+    const valor: any = value.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ',');
+    return valor;
+  }
+
+  enviarNumero(value: string){
+    if (value == '0') {
+      return 0;
+    }else {
+      const valor = value.replace(/,/g, '');
+      return valor;
+    }
   }
 
 }

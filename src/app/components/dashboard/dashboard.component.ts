@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PortalService } from 'src/app/services/portal.service';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-dashboard',
@@ -31,6 +32,26 @@ export class DashboardComponent implements OnInit {
       .subscribe(response => {
         this.requests = response.filter((x: any) => x.nombreCertificado == "CERTIFICADO DEUDA");
       })
+  }
+
+  onGeneratePayment(item: any): void {
+    const data: any = {
+      type: 3,
+      idPayment: item.idSolicitud
+    }
+    Swal.fire({ title: 'Cargando', html: '', timer: 500000, didOpen: () => { Swal.showLoading() }, }).then((result) => { })
+    this.portalService.getGeneratePayment(data).subscribe((res) => {
+      Swal.close();
+      if (res.code == 200) {
+        Swal.fire(
+          '¡Información!',
+          `Se ha enviado un nuevo recibo de pago al e-mail.`,
+          'success'
+        ).then(resultado => {
+          if (resultado.isConfirmed) { }
+        });
+      }
+    });
   }
 
   getState(name: string) {
